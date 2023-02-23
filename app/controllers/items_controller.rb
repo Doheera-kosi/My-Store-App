@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_item, only: %i[show edit update destroy]
 
   # GET /items
@@ -20,6 +22,7 @@ class ItemsController < ApplicationController
   # POST /items
   def create
     @item = Item.new(item_params)
+    @item.user_id = current_user.id
 
     if @item.save
       redirect_to @item, notice: 'Item was successfully created.'
