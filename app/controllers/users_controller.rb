@@ -69,6 +69,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def show
+    @joined_on = @user.created_at.to_formatted_s(:short)
+  
+    if @user.current_sign_in_at
+      @last_login = @user.current_sign_in_at.to_formatted_s(:short)
+    else
+      @last_login = 'never'
+    end
+  end
+
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(
