@@ -2,6 +2,13 @@
 
 <h1>Users</h1>
 
+<th>Role</th>
+<th>Email</th>
+<th colspan="3"></th>
+<td><%= user.role.name %></td>
+<td><%= user.email %></td>
+<td><%= link_to 'Show', user %></td>
+
 <div id="users">
   <% @users.each do |user| %>
     <%= render user %>

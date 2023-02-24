@@ -11,6 +11,16 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :email %><br>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %><br>
+    <%= form.password_field :password, placeholder: "Leave blank if unchanged" %>
+  </div>
+
   <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
