@@ -1,7 +1,9 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
+  before_action :authenticate_user!
 
-  before_action :set_item, only: %i[show edit update destroy]
+  # before_action :set_item, only: %i[show edit update destroy]
 
   # GET /items
   def index
@@ -13,7 +15,7 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   def new
-    @item = Item.new
+    # @item = Item.new
   end
 
   # GET /items/1/edit
@@ -21,7 +23,7 @@ class ItemsController < ApplicationController
 
   # POST /items
   def create
-    @item = Item.new(item_params)
+    # @item = Item.new(item_params)
     @item.user_id = current_user.id
 
     if @item.save

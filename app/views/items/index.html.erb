@@ -1,6 +1,17 @@
 
 <h1>Items</h1>
 
+<td>
+  <% if can? :update, item %>
+    <%= link_to 'Edit', edit_item_path(item) %>
+  <% end %>
+</td>
+<td>
+  <% if can? :destroy, item %>
+    <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</td>
+
 <div id="items">
   <% @items.each do |item| %>
     <%= render item %>
@@ -9,5 +20,9 @@
     </p>
   <% end %>
 </div>
+
+<% if can? :create, Item %>
+  <%= link_to 'New Item', new_item_path %>
+<% end %>
 
 <%= link_to "New item", new_item_path %>
